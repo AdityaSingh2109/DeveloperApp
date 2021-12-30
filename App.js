@@ -135,6 +135,8 @@ import React, { useRef, useState } from "react";
 import { Button, DrawerLayoutAndroid, Text, StyleSheet, View } from "react-native";
 import Header from "./components/header";
 import Drawer from "./components/drawer";
+import Footer from "./components/footer";
+import Home from "./components/home";
 const App = () => {
   const drawer = useRef(null);
   const [drawerPosition, setDrawerPosition] = useState("left");
@@ -181,6 +183,8 @@ const App = () => {
           onPress={() => drawer.current.openDrawer()}
         />
       </View>
+      <Home />
+      <Footer/>
     </DrawerLayoutAndroid>
   );
 };
