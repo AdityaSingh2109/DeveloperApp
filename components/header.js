@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, DrawerLayoutAndroid, Text, StyleSheet, View } from "react-native";
+import {Text, StyleSheet, View } from "react-native";
 
 const Header = () => {
  return(
@@ -11,14 +11,15 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: "#ecf0f1",
+     
     alignItems: "center",
-    // justifyContent: "center",
-    padding: 16
+    justifyContent: "center",
+    marginLeft:70
   },
   txt: {
       fontSize:25,
       color: '#000',
+      
   }
 });
 

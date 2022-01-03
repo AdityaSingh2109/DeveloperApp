@@ -1,45 +1,56 @@
 import React from 'react';
-import {Button,Text, StyleSheet, View } from "react-native";
-
+import {Text, StyleSheet, View, TouchableOpacity} from "react-native";
 const Footer = () => {
  return(
     <View style={styles.footer}>
-        <View>
-        <Button
-        title="Home"
-      />
-        </View>
-        <View>
-        <Button
-        title="JS"
-      />
-        </View>
-        <View>
-        <Button
-        title="ES6"
-      />
-        </View>
-        <View>
-        <Button
-        title="React-Native"
-      />
-        {/* <Text style={styles.txt}>React Tutorial</Text> */}
-        </View>
+     <View style={{flexDirection:'row',padding:6}}>
+    <View style={styles.row}>
+    <TouchableOpacity style={styles.fotterTitle}>
+       <Text style={styles.fotterText}>Home</Text>
+     </TouchableOpacity>
+    </View>
+     <View style={styles.row}>
+    <TouchableOpacity style={styles.fotterTitle}>
+       <Text style={styles.fotterText}>JS</Text>
+     </TouchableOpacity>
+    </View>
+    <View style={styles.row}>
+    <TouchableOpacity style={styles.fotterTitle}>
+       <Text style={styles.fotterText}>ES6</Text>
+     </TouchableOpacity>
+    </View>
+    <View style={styles.row}>
+    <TouchableOpacity style={styles.fotterTitle}>
+       <Text style={styles.fotterText}>React-Native</Text>
+     </TouchableOpacity>
+    </View>
+     </View>
     </View>
  );
 };
 
 const styles = StyleSheet.create({
   footer: {
-    backgroundColor: "#ecf0f1",
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,  
+    elevation: 5,
+    backgroundColor: "#fff",
     alignItems: "center",
-    // justifyContent: "center",
     padding: 16
   },
-  txt: {
-      fontSize:25,
-      color: '#000',
+  row:{
+    marginHorizontal:5
+  },
+  fotterTitle:{
+    paddingHorizontal:20
+  },
+  fotterText:{
+    fontSize:20,
+    color:"#000000"
   }
+   
 });
 
 export default Footer;

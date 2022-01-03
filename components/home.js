@@ -1,37 +1,15 @@
-// import React from 'react';
-// import { Text, StyleSheet, View } from "react-native";
-
-// const Home = () => {
-//  return(
-//     <View style={styles.header}>
-//         <Text style={styles.txt}>JavaScript</Text>
-//     </View>
-
-//  );
-// };
-
-// const styles = StyleSheet.create({
- 
-// });
-
-// export default Home;
-
 import React from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
-
 const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'JavaScript',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'ES-6',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'React-Native',
-  },
+  {id: '1',title: 'JavaScript',},
+  {id: '2',title: 'ES-6',},
+  {id: '3',title: 'React-Native',},
+  {id: '4',title: 'JavaScript',},
+  {id: '5',title: 'ES-6',},
+  {id: '6',title: 'React-Native',},
+  {id: '7',title: 'JavaScript',},
+  {id: '8',title: 'ES-6',},
+  {id: '9',title: 'React-Native',},
 ];
 
 const Item = ({ title }) => (
@@ -59,13 +37,13 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
+    marginVertical: 10,
   },
   item: {
     backgroundColor: '#f9c2ff',
     padding: 20,
     marginVertical: 8,
-    marginHorizontal: 16,
+    marginHorizontal: 18,
   },
   title: {
     fontSize: 32,
