@@ -1,25 +1,24 @@
 import React from 'react';
 import {Text, StyleSheet, View } from "react-native";
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-const Header = () => {
+const Header = (props) => {
  return(
     <View style={styles.header}>
-        <Text style={styles.txt}>React Tutorial</Text>
+           {/* <FontAwesome name='heart' size={20} style={{color:'black'}}/>  */}
+        <Text style={[styles.txt,props.bkColor?{color:"#fff"}:{color:'#000'}]}>{props.title}</Text>
     </View>
  );
 };
 
 const styles = StyleSheet.create({
   header: {
-     
-    alignItems: "center",
-    justifyContent: "center",
-    marginLeft:70
-  },
+
+   },
   txt: {
       fontSize:25,
       color: '#000',
-      
+      marginHorizontal:20
   }
 });
 

@@ -16,7 +16,7 @@ const Drawer = () => {
       </View>
       <View style={{marginHorizontal:5, }}>
         <TouchableOpacity style={styles.drawerOption}>
-          <Text style={styles.drawerOptionText}>React-Native</Text>
+          <Text style={styles.drawerOptionText}>JavaScript</Text>
         </TouchableOpacity>
       </View>
       <View style={{marginHorizontal:5, }}>
@@ -26,7 +26,22 @@ const Drawer = () => {
       </View>
       <View style={{marginHorizontal:5, }}>
         <TouchableOpacity style={styles.drawerOption}>
-          <Text style={styles.drawerOptionText}>JavaScript</Text>
+          <Text style={styles.drawerOptionText}>React</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{marginHorizontal:5, }}>
+        <TouchableOpacity style={styles.drawerOption}>
+          <Text style={styles.drawerOptionText}>React-Native</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{marginHorizontal:5, }}>
+        <TouchableOpacity style={styles.drawerOption}>
+          <Text style={styles.drawerOptionText}>My Profile</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{marginHorizontal:5, }}>
+        <TouchableOpacity style={styles.drawerOption}>
+          <Text style={styles.drawerOptionText}>Logout</Text>
         </TouchableOpacity>
       </View>
     </View>
