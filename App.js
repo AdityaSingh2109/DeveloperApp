@@ -1,6 +1,5 @@
 import React, {  } from "react";
 import { } from "react-native";
- 
 import HomeScreen from "./views/home";
 import TutorialScreen from "./views/tutorial";
 import ProgramDetailScreen from "./views/programDetail";
@@ -10,7 +9,7 @@ const App = () => {
   return (
   
     <HomeScreen />
-    // <TutorialScreen />
+    //<TutorialScreen />
     // <ProgramDetailScreen />
     // <ProgramListScreen />
   );
