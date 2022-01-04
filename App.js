@@ -9,8 +9,8 @@ const App = () => {
   
   return (
   
-    //<HomeScreen />
-     <TutorialScreen />
+    <HomeScreen />
+    // <TutorialScreen />
     // <ProgramDetailScreen />
     // <ProgramListScreen />
   );
