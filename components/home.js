@@ -17,6 +17,9 @@
 // export default Home;
 
 import React from 'react';
+// import Header from "./header";
+// import Footer from "./footer";
+// import HomeScreen from './navigation';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
 
 const DATA = [
@@ -34,6 +37,7 @@ const DATA = [
   },
 ];
 
+
 const Item = ({ title }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
@@ -47,6 +51,7 @@ const Home = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+        
       <FlatList
         data={DATA}
         renderItem={renderItem}

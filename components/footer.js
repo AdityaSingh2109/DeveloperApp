@@ -1,9 +1,10 @@
 import React from 'react';
 import {Button,Text, StyleSheet, View } from "react-native";
-
+import HomeScreen from './navigation';
 const Footer = () => {
  return(
     <View style={styles.footer}>
+        <HomeScreen />
         <View>
         <Button
         title="Home"

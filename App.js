@@ -137,6 +137,9 @@ import Header from "./components/header";
 import Drawer from "./components/drawer";
 import Footer from "./components/footer";
 import Home from "./components/home";
+import HomeScreen from "./components/navigation";
+// import { NavigationContainer } from '@react-navigation/native';
+// import { NavigationContainer } from '@react-navigation/native';
 const App = () => {
   const drawer = useRef(null);
   const [drawerPosition, setDrawerPosition] = useState("left");
@@ -147,6 +150,7 @@ const App = () => {
   //   //   setDrawerPosition("left");
   //   // }
   // };
+  
   
   const navigationView = () => (
     <View style={[styles.container, styles.navigationContainer]}>
@@ -183,7 +187,8 @@ const App = () => {
           onPress={() => drawer.current.openDrawer()}
         />
       </View>
-      <Home />
+        <HomeScreen />
+      <Home/>
       <Footer/>
     </DrawerLayoutAndroid>
   );
