@@ -5,22 +5,22 @@ const Footer = ({navigation}) => {
     <View style={styles.footer}>
      <View style={{flexDirection:'row',padding:6}}>
     <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle}  >
+    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("Home")} >
        <Text style={styles.fotterText}>Home</Text>
      </TouchableOpacity>
     </View>
      <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("programDetail")}>
+    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("TutorialScreen",{name:'Javascript'})}>
        <Text style={styles.fotterText}>JS</Text>
      </TouchableOpacity>
     </View>
     <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("programList")}>
+    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("TutorialScreen",{name:'ES-6'})}>
        <Text style={styles.fotterText}>ES6</Text>
      </TouchableOpacity>
     </View>
     <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("tutorial")}>
+    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("TutorialScreen",{name:'React-Native'})}>
        <Text style={styles.fotterText}>React-Native</Text>
      </TouchableOpacity>
     </View>

@@ -27,12 +27,12 @@ const DATA = [
   {id: '19',title: 'React-Native', defination:'', o:false},
 ];
 
-const Item = ({id, title}) =>{ 
+const Item = ({id, title,navigation}) =>{ 
  
   return(
     <View>
       <View style={[styles.item,{borderRadius:50,margin:4},id%2?{backgroundColor:"#fff"}:{backgroundColor:"#26619c"}]}>
-      <TouchableWithoutFeedback onPress={()=>{}} >
+      <TouchableWithoutFeedback onPress={()=>navigation.navigate('ProgramDetailScreen',{name:title})} >
           <View style={{alignItems:'center',marginHorizontal:30 }}>
             <Text style={[styles.title,id%2?{color:"#26619c"}:{color:"#fff"}]}>{title}</Text>
           </View>
@@ -42,10 +42,10 @@ const Item = ({id, title}) =>{
   )
 }
  
-const ProgramList = () => {
+const ProgramList = ({navigation}) => {
   const renderItem = ({ item }) => (
     <View>
-       <Item id={item.id} title={item.title} defination={item.defination} open={item.o} />
+       <Item navigation={navigation} id={item.id} title={item.title} defination={item.defination} open={item.o} />
     </View>
    
   );

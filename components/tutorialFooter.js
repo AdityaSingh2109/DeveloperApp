@@ -1,24 +1,23 @@
 import React from 'react';
 import {Text, StyleSheet, View, TouchableOpacity} from "react-native";
  
-const TutorialFooter = () => {
+const TutorialFooter = ({navigation,title}) => {
  return(
     <View style={styles.footer}>
      <View style={{flexDirection:'row',padding:6}}>
     <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle}>
-       <Text style={styles.fotterText}>React</Text>
-     </TouchableOpacity>
-    </View>
-     <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle}>
-       <Text style={styles.fotterText}>React Native</Text>
+    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("TutorialScreen",{name:title})}>
+       <Text style={styles.fotterText}>Tutorial</Text>
      </TouchableOpacity>
     </View>
     <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle}>
-       <Text style={styles.fotterText}> Redux         
-         </Text>
+    <View style={styles.fotterTitle}>
+       <Text style={styles.fotterText}>|</Text>
+     </View>
+    </View>
+     <View style={styles.row}>
+    <TouchableOpacity style={styles.fotterTitle} onPress={()=>navigation.navigate('ProgramListScreen',{name:title})}>
+       <Text style={styles.fotterText}>Program</Text>
      </TouchableOpacity>
     </View>
      </View>
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     backgroundColor: "#003153",
     alignItems: "center",
-    padding: 12
+    padding: 5
   },
   row:{
     marginHorizontal:5
@@ -44,7 +43,7 @@ const styles = StyleSheet.create({
     paddingHorizontal:20
   },
   fotterText:{
-    fontSize:20,
+    fontSize:30,
     color:"#fff"
   }
    

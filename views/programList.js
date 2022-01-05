@@ -3,20 +3,24 @@ import { Text, StyleSheet, View,TouchableOpacity } from "react-native";
 import Header from "../components/header";
 import TutorialFooter from "../components/tutorialFooter";
 import ProgramList from "../components/programList";
-export default function ProgramListScreen () {
+import { useNavigation } from '@react-navigation/native';
+
+export default function ProgramListScreen ({route}) {
+  const navigation = useNavigation();
+  const { name } = route.params;
   return (
     <>
     <View style={styles.drawerContainer}>
       <View style={ styles.drawerIcon}>
         <TouchableOpacity style={{paddingHorizontal:20}}  
-          onPress={() => {}}>
+          onPress={() => navigation.goBack()}>
           <Text style={styles.headerIcon}>#</Text>
         </TouchableOpacity>
       </View>
-      <Header title={'React Native Programs'} bkColor={true}/>
+      <Header title={(name)} program={true} bkColor={true}/>
     </View>
-    <ProgramList/>
-    <TutorialFooter/>
+    <ProgramList navigation={navigation}/>
+    <TutorialFooter navigation={navigation} title={(name)}/>
     </>
   );
 };
