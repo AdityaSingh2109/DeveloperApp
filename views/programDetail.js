@@ -1,22 +1,26 @@
 import React from "react";
 import { Text, StyleSheet, View,TouchableOpacity, ScrollView } from "react-native";
 import Header from "../components/header";
-export default function ProgramDetailScreen () {
+import { useNavigation } from '@react-navigation/native';
+
+export default function ProgramDetailScreen ({route}) {
+  const navigation = useNavigation();
+  const { name } = route.params;
   return (
     <>
     <View style={styles.Container}>
       <View style={ styles.Icon}>
         <TouchableOpacity style={{paddingHorizontal:20}}  
-          onPress={() => {}}>
+          onPress={() => navigation.goBack()}>
           <Text style={styles.headerIcon}>#</Text>
         </TouchableOpacity>
       </View>
-      <Header title={'React Native tutorial'} bkColor={true}/>
+      <Header title={(name)} bkColor={true}/>
     </View>
     <ScrollView>
 
     <View style={{paddingVertical:10,paddingHorizontal:20,marginTop:2,backgroundColor:'green'}}>
-        <Text style={{color:"#fff",fontSize:15,fontWeight:'800'}}>1. Program</Text>
+        <Text style={{color:"#fff",fontSize:15,fontWeight:'800'}}>1. Program of {(name)}</Text>
     </View>
     <View style={{paddingVertical:10,paddingHorizontal:20}}>
     <Text style={{color:'#000',fontSize:12}}>{

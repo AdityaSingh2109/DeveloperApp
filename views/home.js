@@ -5,6 +5,7 @@ import Drawer from "../components/drawer";
 import Footer from "../components/footer";
 import Home from "../components/home";
 import { useNavigation } from '@react-navigation/native';
+
  export default function HomeScreen() {
   const drawer = useRef(null);
   const [drawerPosition, setDrawerPosition] = useState("left");
@@ -39,7 +40,7 @@ import { useNavigation } from '@react-navigation/native';
         </View>
         <Header title={'React Tutorial APP'} />
       </View>
-      <Home/>
+      <Home navigation={navigation}/>
       <Footer navigation={navigation}/>
     </DrawerLayoutAndroid>
      
