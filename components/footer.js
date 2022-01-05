@@ -1,26 +1,26 @@
 import React from 'react';
 import {Text, StyleSheet, View, TouchableOpacity} from "react-native";
-const Footer = () => {
+const Footer = ({navigation}) => {
  return(
     <View style={styles.footer}>
      <View style={{flexDirection:'row',padding:6}}>
     <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle}>
+    <TouchableOpacity style={styles.fotterTitle}  >
        <Text style={styles.fotterText}>Home</Text>
      </TouchableOpacity>
     </View>
      <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle}>
+    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("programDetail")}>
        <Text style={styles.fotterText}>JS</Text>
      </TouchableOpacity>
     </View>
     <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle}>
+    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("programList")}>
        <Text style={styles.fotterText}>ES6</Text>
      </TouchableOpacity>
     </View>
     <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle}>
+    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("tutorial")}>
        <Text style={styles.fotterText}>React-Native</Text>
      </TouchableOpacity>
     </View>
