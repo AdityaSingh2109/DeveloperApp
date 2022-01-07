@@ -6,20 +6,21 @@ import ProgramListScreen from '../../views/programList';
 import TutorialScreen from '../../views/tutorial';
 import HomeScreen from '../../views/home';
 import TutorialDetailScreen from '../../views/tutorialDetail';
+import Login from "../../views/login";
+import Register from "../../views/register";
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      
+        <Stack.Screen options={{ headerShown: false }} name="Login" component={Login}  />
+        <Stack.Screen options={{ headerShown: false }} name="Register" component={Register} />
         <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen}  />
         <Stack.Screen options={{ headerShown: false }} name="ProgramDetailScreen" component={ProgramDetailScreen} />
         <Stack.Screen options={{ headerShown: false }} name="ProgramListScreen" component={ProgramListScreen} />
         <Stack.Screen options={{ headerShown: false }} name="TutorialScreen" component={TutorialScreen} />
-        <Stack.Screen options={{ headerShown: false }} name="TutorialDetailScreen" component={TutorialDetailScreen} 
-      />
-
+        <Stack.Screen options={{ headerShown: false }} name="TutorialDetailScreen" component={TutorialDetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
