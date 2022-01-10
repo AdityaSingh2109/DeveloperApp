@@ -8,6 +8,7 @@ import HomeScreen from '../../views/home';
 import TutorialDetailScreen from '../../views/tutorialDetail';
 import Login from "../../views/login";
 import Register from "../../views/register";
+import CompilerScreen from '../../views/compiler'
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
@@ -21,6 +22,8 @@ const MyStack = () => {
         <Stack.Screen options={{ headerShown: false }} name="ProgramListScreen" component={ProgramListScreen} />
         <Stack.Screen options={{ headerShown: false }} name="TutorialScreen" component={TutorialScreen} />
         <Stack.Screen options={{ headerShown: false }} name="TutorialDetailScreen" component={TutorialDetailScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="CompilerScreen" component={CompilerScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

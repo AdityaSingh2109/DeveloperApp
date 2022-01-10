@@ -1,12 +1,12 @@
 import React from 'react';
  import { WebView } from 'react-native-webview';
   
-const TutorialWeb = ({link}) => {
+const CompilerWeb = ({link}) => {
   return (
     <WebView 
-  
+ style={{marginTop:-50}}
     source={{ uri:  link}} />
   );
 }
  
-export default TutorialWeb;
+export default CompilerWeb;

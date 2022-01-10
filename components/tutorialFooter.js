@@ -6,7 +6,7 @@ const TutorialFooter = ({navigation,title}) => {
     <View style={styles.footer}>
      <View style={{flexDirection:'row',padding:6}}>
     <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("TutorialScreen",{name:title})}>
+    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("TutorialScreen",{name:title=='JS'?'JavaScript':title=='R N'?'React Native':title})}>
        <Text style={styles.fotterText}>Tutorial</Text>
      </TouchableOpacity>
     </View>
@@ -16,7 +16,7 @@ const TutorialFooter = ({navigation,title}) => {
      </View>
     </View>
      <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle} onPress={()=>navigation.navigate('ProgramListScreen',{name:title})}>
+    <TouchableOpacity style={styles.fotterTitle} onPress={()=>navigation.navigate('ProgramListScreen',{name:title=='JS'?'JavaScript':title=='R N'?'React Native':title})}>
        <Text style={styles.fotterText}>Program</Text>
      </TouchableOpacity>
     </View>
