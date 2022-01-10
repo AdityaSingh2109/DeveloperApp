@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function TutorialDetailScreen ({route}) {
     const navigation = useNavigation();
-    const { name } = route.params;
+    const { name,link } = route.params;
 
   return (
     <>
@@ -21,7 +21,7 @@ export default function TutorialDetailScreen ({route}) {
       <Header title={(name)} bkColor={true}/>
 
     </View>
-    <TutorialWeb />
+    <TutorialWeb link={link} />
     </>
   );
 };

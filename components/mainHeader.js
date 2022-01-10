@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, StyleSheet, View } from "react-native";
-const Header = (props) => {
+const MainHeader = (props) => {
  return(
     <View style={styles.header}>
            {/* <FontAwesome name='heart' size={20} style={{color:'black'}}/>  */}
-        <Text style={[styles.txt,props.bkColor?{color:"#fff"}:{color:'#000'}]}>{props.title}{props.program?' Program':' Tutorial'}</Text>
+        <Text style={[styles.txt,props.bkColor?{color:"#fff"}:{color:'#000'}]}>{props.title}</Text>
     </View>
  );
 };
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Header;
+export default MainHeader;

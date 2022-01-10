@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { DrawerLayoutAndroid, Text, StyleSheet, View,TouchableOpacity } from "react-native";
-import Header from "../components/header";
+import MainHeader from "../components/mainHeader";
 import Drawer from "../components/drawer";
 import Footer from "../components/footer";
 import Home from "../components/home";
@@ -38,7 +38,7 @@ import { useNavigation } from '@react-navigation/native';
             <Text style={styles.headerIcon}>#</Text>
           </TouchableOpacity>
         </View>
-        <Header title={'React Tutorial APP'} />
+        <MainHeader title={'React Tutorial APP'} />
       </View>
       <Home navigation={navigation}/>
       <Footer navigation={navigation}/>
