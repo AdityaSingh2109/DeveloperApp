@@ -20,7 +20,7 @@ export default function TutorialScreen ({route}) {
       </View>
       <Header title={(name)} bkColor={true}/>
     </View>
-    <Tutorial navigation={navigation}/>
+    <Tutorial navigation={navigation} title={(name)}/>
     <TutorialFooter navigation={navigation} title={(name)}/>
     </>
   );

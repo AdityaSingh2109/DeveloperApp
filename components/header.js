@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
   txt: {
       fontSize:25,
       color: '#000',
-      marginHorizontal:20
+      marginHorizontal:10,
+      paddingRight:20
   }
 });
 
