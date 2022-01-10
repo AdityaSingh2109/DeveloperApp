@@ -11,7 +11,7 @@ const DATA = [
 
 const TutorialItem = ({ title ,navigation}) => (
  <View style={{flexDirection:'row'}}>
-    <TouchableWithoutFeedback onPress={()=>navigation.navigate('TutorialScreen',{name:title})} >
+    <TouchableWithoutFeedback onPress={()=>navigation.navigate('TutorialScreen',{name:title=='JS'?'JavaScript':title=='R N'?'React Native':title})} >
   <View style={styles.item}>
     <View style={{alignItems:'center'}}>
         <Image
@@ -23,7 +23,7 @@ const TutorialItem = ({ title ,navigation}) => (
     <Text style={styles.title}>{title}</Text>
   </View>
   </TouchableWithoutFeedback>
-  <TouchableWithoutFeedback onPress={()=>navigation.navigate('ProgramListScreen',{name:title})} >
+  <TouchableWithoutFeedback onPress={()=>navigation.navigate('ProgramListScreen',{name:title=='JS'?'JavaScript':title=='R N'?'React Native':title})} >
   <View style={styles.item}>
     <View style={{alignItems:'center'}}>
         <Image
@@ -60,11 +60,27 @@ ListHeaderComponent={()=>(<View style={{marginVertical:20}}>
 />
 </View>
 <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
-<Text style={{fontSize:20,color:'#26619c'}}>Android Development</Text>
+<Text style={{fontSize:20,color:'#26619c'}}>TFT Tutorials</Text>
 </View></View>)
 }
 
 keyExtractor={item => item.id}
+ListFooterComponent={()=>(<View style={{flexDirection:'row'}}>
+   <TouchableWithoutFeedback onPress={()=>navigation.navigate('CompilerScreen',{name:'Javascript compiler',link:'https://www.programiz.com/javascript/online-compiler/'})} >
+  <View style={styles.itemCompiler}>
+    <View style={{alignItems:'center'}}>
+        <Image
+          style={{width:60,height:60,borderRadius:35} }
+          source={{uri:'https://www.freepnglogos.com/uploads/javascript/javascript-wysiwyg-editor-and-reusable-assets-coherent-editor-5.png'}}
+          resizeMode={"cover"}
+        />
+      </View>
+    <Text style={styles.title}> Javascript compiler</Text>
+  </View>
+  </TouchableWithoutFeedback>
+  
+  </View>
+)}
 />
 
  
@@ -84,6 +100,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     height:120,
     width:"45%",
+    padding: 10,
+    marginVertical: 8,
+    marginHorizontal: 10,
+    borderRadius:10,
+    alignItems:'center',
+    alignContent:'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,  
+    elevation: 5,
+  },
+   itemCompiler: {
+    backgroundColor: '#fff',
+    height:120,
+    width:"95%",
     padding: 10,
     marginVertical: 8,
     marginHorizontal: 10,

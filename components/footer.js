@@ -10,7 +10,7 @@ const Footer = ({navigation}) => {
      </TouchableOpacity>
     </View>
      <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("TutorialScreen",{name:'Javascript'})}>
+    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("TutorialScreen",{name:'JavaScript'})}>
        <Text style={styles.fotterText}>JS</Text>
      </TouchableOpacity>
     </View>
@@ -20,7 +20,7 @@ const Footer = ({navigation}) => {
      </TouchableOpacity>
     </View>
     <View style={styles.row}>
-    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("TutorialScreen",{name:'React-Native'})}>
+    <TouchableOpacity style={styles.fotterTitle} onPress={() =>navigation.navigate("TutorialScreen",{name:'React Native'})}>
        <Text style={styles.fotterText}>React-Native</Text>
      </TouchableOpacity>
     </View>

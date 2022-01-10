@@ -1,13 +1,13 @@
 import React from "react";
 import { Text, StyleSheet, View,TouchableOpacity } from "react-native";
-import Header from "../components/header";
-import TutorialFooter from "../components/tutorialFooter";
-import ProgramList from "../components/programList";
+import MainHeader from "../components/mainHeader";
+import CompilerWeb from "../components/compilerWeb";
 import { useNavigation } from '@react-navigation/native';
 
-export default function ProgramListScreen ({route}) {
-  const navigation = useNavigation();
-  const { name,link } = route.params;
+export default function CompilerScreen ({route}) {
+    const navigation = useNavigation();
+    const { name,link } = route.params;
+
   return (
     <>
     <View style={styles.drawerContainer}>
@@ -17,10 +17,11 @@ export default function ProgramListScreen ({route}) {
           <Text style={styles.headerIcon}>#</Text>
         </TouchableOpacity>
       </View>
-      <Header title={(name)} program={true} bkColor={true}/>
+      <MainHeader title={(name)} bkColor={true}/>
+
     </View>
-    <ProgramList navigation={navigation} title={(name)} />
-    <TutorialFooter navigation={navigation} title={(name)} />
+         <CompilerWeb link={link} />
+
     </>
   );
 };
@@ -40,7 +41,11 @@ const styles = StyleSheet.create({
    },
   navigationContainer: {
    },
-  
+  paragraph: {
+    padding: 16,
+    fontSize: 15,
+    textAlign: "center"
+  },
   headerIcon:{
     fontSize:25,
     color:"#fff"
@@ -50,7 +55,14 @@ const styles = StyleSheet.create({
     justifyContent:"center",
     marginLeft:-20
   },
- 
+  closeDrawer:{
+    marginHorizontal:5,
+    justifyContent:"center" ,
+    alignItems:'center',
+    position:'absolute',
+    top:8,
+    right:-10
+  }
 });
 
  
