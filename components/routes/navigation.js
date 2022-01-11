@@ -9,6 +9,7 @@ import TutorialDetailScreen from '../../views/tutorialDetail';
 import Login from "../../views/login";
 import Register from "../../views/register";
 import CompilerScreen from '../../views/compiler'
+import Forgotpass from '../../views/Forpass';
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
@@ -16,6 +17,7 @@ const MyStack = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen options={{ headerShown: false }} name="Login" component={Login}  />
+        <Stack.Screen options={{ headerShown: false }} name="Forpass" component={Forgotpass} />
         <Stack.Screen options={{ headerShown: false }} name="Register" component={Register} />
         <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen}  />
         <Stack.Screen options={{ headerShown: false }} name="ProgramDetailScreen" component={ProgramDetailScreen} />
