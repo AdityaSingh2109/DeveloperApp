@@ -1,68 +1,57 @@
-// import firebase from 'firebase';
-
 import React, { useState } from 'react';
 import { StyleSheet ,Button, Text,Image , TextInput, View } from 'react-native';
-// import { container, form } from '../styles';
-import HomeScreen from './home';
-
+ 
 export default function Login({navigation}) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    // const navigation = useNavigation();
+    const [email, setEmail] = useState("abc@tftus.com");
+    const [password, setPassword] = useState("password");
     const emailValidation=()=> {
         const regex =
           /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         return !(!email || regex.test(email) === false);
-      }
-    const onSignUp = () => {
-        // firebase.auth().signInWithEmailAndPassword(email, password)
-        const isEmailValid = emailValidation();
-        // console.log(isEmailValid)
-        if(isEmailValid)
-        {
-        if(email=="abc@tftus.com"&& password=="password")
-        {
-            
-            {navigation.navigate("Home")}
-        }
     }
+    const onSignUp = () => {
+         const isEmailValid = emailValidation();
+         if(isEmailValid){
+            if(email=="abc@tftus.com"&& password=="password"){
+               {navigation.navigate("Home")}
+            }
+        }
     }
 
     return (
-        
         <View style={container.center}>
             <View style={{marginVertical:20}}>
-<View style={{alignItems:'center'}}>
-<Image
-  style={{width:150,height:150,borderRadius:75,} }
-  source={{uri:'https://image.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg'}}
-  resizeMode={"cover"}
-/>
-</View>
-<View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
-<Text style={{fontSize:20,color:'#26619c'}}>Everything You Need to Know For React-Native App Development(Android)</Text>
-</View></View>
+                <View style={{alignItems:'center'}}>
+                    <Image
+                        style={{width:150,height:150,borderRadius:75,} }
+                        source={{uri:'https://image.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg'}}
+                        resizeMode={"cover"}
+                    />
+                </View>
+                <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
+                    <Text style={{fontSize:20,color:'#26619c'}}>Everything You Need to Know For React-Native App Development(Android)</Text>
+                </View>
+            </View>
             <View style={container.formCenter}>
                 <TextInput
                     style={form.textInput}
                     placeholder="email"
                     onChangeText={(email) => setEmail(email)}
+                    value={email}
                 />
                 <TextInput
                     style={form.textInput}
                     placeholder="password"
                     secureTextEntry={true}
                     onChangeText={(password) => setPassword(password)}
+                    value={password}
                 />
-
                 <Button
                     style={form.button}
                     onPress={() => onSignUp()}
                     title="Sign In"
                 />
             </View>
-
-
             <View style={form.bottomButton} >
                 <Text
                     title="Register"

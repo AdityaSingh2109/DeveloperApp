@@ -27,53 +27,21 @@ export default function Register({navigation}) {
             setIsValid({ bool: true, boolSnack: true, message: "passwords must be at least 6 characters" })
             return;
         }
-        // firebase.firestore()
-        //     .collection('users')
-        //     .where('username', '==', username)
-        //     .get()
-        //     .then((snapshot) => {
-
-        //         if (!snapshot.exist) {
-        //             firebase.auth().createUserWithEmailAndPassword(email, password)
-        //                 .then(() => {
-        //                     if (snapshot.exist) {
-        //                         return
-        //                     }
-        //                     firebase.firestore().collection("users")
-        //                         .doc(firebase.auth().currentUser.uid)
-        //                         .set({
-        //                             name,
-        //                             email,
-        //                             username,
-        //                             image: 'default',
-        //                             followingCount: 0,
-        //                             followersCount: 0,
-
-        //                         })
-        //                 })
-        //                 .catch(() => {
-        //                     setIsValid({ bool: true, boolSnack: true, message: "Something went wrong" })
-        //                 })
-        //         }
-        //     }).catch(() => {
-        //         setIsValid({ bool: true, boolSnack: true, message: "Something went wrong" })
-        //     })
-
     }
-
     return (
         <View style={container.center}>
             <View style={{marginVertical:20}}>
-<View style={{alignItems:'center'}}>
-<Image
-  style={{width:150,height:150,borderRadius:75,} }
-  source={{uri:'https://image.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg'}}
-  resizeMode={"cover"}
-/>
-</View>
-<View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
-<Text style={{fontSize:20,color:'#26619c'}}>React-Native (Android) Development</Text>
-</View></View>
+                <View style={{alignItems:'center'}}>
+                    <Image
+                        style={{width:150,height:150,borderRadius:75,} }
+                        source={{uri:'https://image.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg'}}
+                         resizeMode={"cover"}
+                    />
+                </View>
+                <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
+                    <Text style={{fontSize:20,color:'#26619c'}}>React-Native (Android) Development</Text>
+                </View>    
+            </View>
             <View style={container.formCenter}>
                 <TextInput
                     style={form.textInput}

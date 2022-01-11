@@ -3,11 +3,9 @@ import { Text, StyleSheet, View,TouchableOpacity } from "react-native";
 import Header from "../components/header";
 import TutorialFooter from "../components/tutorialFooter";
 import ProgramList from "../components/programList";
-import { useNavigation } from '@react-navigation/native';
 
-export default function ProgramListScreen ({route}) {
-  const navigation = useNavigation();
-  const { name,link } = route.params;
+export default function ProgramListScreen ({route,navigation}) {
+   const { name,link } = route.params;
   return (
     <>
     <View style={styles.drawerContainer}>

@@ -1,48 +1,28 @@
-import React, { useRef, useState } from "react";
-import { DrawerLayoutAndroid, Text, StyleSheet, View,TouchableOpacity } from "react-native";
+import React  from "react";
+import {   Text, StyleSheet, View,TouchableOpacity } from "react-native";
 import MainHeader from "../components/mainHeader";
-import Drawer from "../components/drawer";
 import Footer from "../components/footer";
 import Home from "../components/home";
 import { useNavigation } from '@react-navigation/native';
 
- export default function HomeScreen() {
-  const drawer = useRef(null);
-  const [drawerPosition, setDrawerPosition] = useState("left");
-  const navigation = useNavigation();
-  const navigationView = () => (
-    <View style={[ styles.navigationContainer]}>
-      <View style={styles.closeDrawer}>
-        <TouchableOpacity style={{paddingHorizontal:20}}  
-          onPress={() => drawer.current.closeDrawer()}
-        >
-          <Text style={styles.headerIcon}>X</Text>
-        </TouchableOpacity>
-      </View>
-      <Drawer />
-    </View>
-  );
-
+ export default function HomeScreen({navigation}) {
+   
   return (
-    <DrawerLayoutAndroid
-      ref={drawer}
-      drawerWidth={220}
-      drawerPosition={drawerPosition}
-      renderNavigationView={navigationView}
-      backgroundColor={'#e6f9ff'}
-    >
+    <View style={{backgroundColor:'#e6f9ff'}}>
       <View style={styles.drawerContainer}>
         <View style={ styles.drawerIcon}>
           <TouchableOpacity style={{paddingHorizontal:20}}  
-            onPress={() => drawer.current.openDrawer()}>
+            onPress={() => navigation.toggleDrawer()}>
             <Text style={styles.headerIcon}>#</Text>
           </TouchableOpacity>
         </View>
         <MainHeader title={'React Tutorial APP'} />
       </View>
       <Home navigation={navigation}/>
+      {/* <View style={{position:'absolute',bottom:70}}>
       <Footer navigation={navigation}/>
-    </DrawerLayoutAndroid>
+      </View> */}
+    </View>
      
      
     
