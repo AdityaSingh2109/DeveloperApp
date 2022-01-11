@@ -5,11 +5,20 @@ import Drawer from "../components/drawer";
 import Footer from "../components/footer";
 import Home from "../components/home";
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons';
 
  export default function HomeScreen() {
   const drawer = useRef(null);
   const [drawerPosition, setDrawerPosition] = useState("left");
   const navigation = useNavigation();
+  // const myButton = (
+  //   <Icon.Button
+  //     name="facebook"
+  //     backgroundColor="#3b5998"
+  //     // onPress={this.loginWithFacebook}
+  //   >
+  //   </Icon.Button>
+  // );
   const navigationView = () => (
     <View style={[ styles.navigationContainer]}>
       <View style={styles.closeDrawer}>

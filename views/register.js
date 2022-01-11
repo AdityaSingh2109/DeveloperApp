@@ -1,6 +1,6 @@
 // import firebase from 'firebase';
 import React, { useState } from 'react';
-import { StyleSheet, Button, Text, TextInput,Image , View } from 'react-native';
+import { TouchableOpacity, StyleSheet, Button, Text, TextInput,Image , View } from 'react-native';
 import { Snackbar } from 'react-native-paper';
 // import { container, form } from '../styles';
 import { useNavigation } from '@react-navigation/native';
@@ -64,16 +64,17 @@ export default function Register({navigation}) {
     return (
         <View style={container.center}>
             <View style={{marginVertical:20}}>
-<View style={{alignItems:'center'}}>
-<Image
-  style={{width:150,height:150,borderRadius:75,} }
-  source={{uri:'https://image.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg'}}
-  resizeMode={"cover"}
-/>
-</View>
-<View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
-<Text style={{fontSize:20,color:'#26619c'}}>React-Native (Android) Development</Text>
-</View></View>
+                <View style={{alignItems:'center'}}>
+                    <Image
+                        style={{width:150,height:150,borderRadius:75,} }
+                        source={{uri:'https://image.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg'}}
+                        resizeMode={"cover"}
+                    />
+                </View>
+                <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
+                    <Text style={{fontSize:20,color:'#26619c'}}>Welcome, New User</Text>
+                </View>
+            </View>
             <View style={container.formCenter}>
                 <TextInput
                     style={form.textInput}
@@ -104,14 +105,21 @@ export default function Register({navigation}) {
                     onPress={() => onRegister()}
                     title="Register"
                 />
+                <TouchableOpacity>
+                <Text
+                    title="Register"
+                    onPress={() =>navigation.navigate("Login")} >
+                    Already have an account? SignIn.
+                </Text>
+                </TouchableOpacity>
             </View>
 
-            <View style={form.bottomButton} >
+            {/* <View style={form.bottomButton} >
                 <Text
                     onPress={() =>navigation.navigate("Login")} >
                     Already have an account? SignIn.
                 </Text>
-            </View>
+            </View> */}
             <Snackbar
                 visible={isValid.boolSnack}
                 duration={2000}

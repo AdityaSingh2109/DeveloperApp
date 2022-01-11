@@ -1,86 +1,28 @@
-// import firebase from 'firebase';
-
 import React, { useState } from 'react';
 import { StyleSheet ,Button, Text,Image , TextInput, View, TouchableOpacity } from 'react-native';
-import { create } from 'react-test-renderer';
-// import { container, form } from '../styles';
-import HomeScreen from './home';
 
-export default function Login({navigation}) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    // const navigation = useNavigation();
-    const emailValidation=()=> {
-        const regex =
-          /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        return !(!email || regex.test(email) === false);
-      }
-    const onSignUp = () => {
-        // firebase.auth().signInWithEmailAndPassword(email, password)
-        const isEmailValid = emailValidation();
-        // console.log(isEmailValid)
-        if(isEmailValid)
-        {
-        if(email=="abc@tftus.com"&& password=="password")
-        {
-            
-            {navigation.navigate("Home")}
-        }
-    }
-    }
-
+export default function Forgotpass({navigation}) {
     return (
         
         <View style={container.center}>
             <View style={{marginVertical:20}}>
-                <View style={{alignItems:'center'}}>
-                    <Image
-                    style={{width:150,height:150,borderRadius:75,} }
-                    source={{uri:'https://image.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg'}}
-                    resizeMode={"cover"}
-                    />
-                </View>
+                
                 <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
-                    <Text style={{fontSize:20,color:'#26619c'}}>React-Native App Development(Android)</Text>
+                    <Text style={{fontSize:20,color:'#26619c'}}>Forgot Password</Text>
                 </View>
             </View>
             <View style={container.formCenter}>
                 <TextInput
                     style={form.textInput}
                     placeholder="email"
-                    onChangeText={(email) => setEmail(email)}
+                    // onChangeText={(email) => setEmail(email)}
                 />
-                <TextInput
-                    style={form.textInput}
-                    placeholder="password"
-                    secureTextEntry={true}
-                    onChangeText={(password) => setPassword(password)}
-                />
-                <TouchableOpacity onPress={() =>navigation.navigate("Forpass")}>
-                    <Text style={styles.forgot_button}>Forgot Password?</Text>
-                </TouchableOpacity>
                 <Button
                     style={form.button}
-                    onPress={() => onSignUp()}
-                    title="Sign In"
+                    onPress={() =>navigation.navigate("Login")}
+                    title="Send Reset Link"
                 />
-                <TouchableOpacity>
-                <Text
-                    title="Register"
-                    onPress={() =>navigation.navigate("Register")} >
-                    Don't have an account? SignUp.
-                </Text>
-                </TouchableOpacity>
             </View>
-
-
-            {/* <View style={form.bottomButton} >
-                <Text
-                    title="Register"
-                    onPress={() =>navigation.navigate("Register")} >
-                    Don't have an account? SignUp.
-                </Text>
-            </View> */}
         </View>
     )
 }
