@@ -1,13 +1,10 @@
 import React from "react";
 import { Text, StyleSheet, View,TouchableOpacity } from "react-native";
 import Header from "../components/header";
-import TutorialFooter from "../components/tutorialFooter";
 import TutorialWeb from "../components/tutorialWeb";
-import { useNavigation } from '@react-navigation/native';
-
-export default function TutorialDetailScreen ({route}) {
-    const navigation = useNavigation();
-    const { name,link } = route.params;
+ 
+export default function TutorialDetailScreen ({route,navigation}) {
+     const { name,link } = route.params;
 
   return (
     <>

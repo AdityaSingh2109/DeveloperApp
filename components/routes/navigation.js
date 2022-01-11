@@ -11,15 +11,48 @@ import Register from "../../views/register";
 import CompilerScreen from '../../views/compiler'
 import Forgotpass from '../../views/Forpass';
 const Stack = createNativeStackNavigator();
+import CompilerScreen from '../../views/compiler'
+import Login from "../../views/login";
+import Register from "../../views/register";
+import MyDrawer from '../drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
+const TabBottom = createBottomTabNavigator();
+
+function HomeWithBottomTab(){
+return(
+        <TabBottom.Navigator
+          initialRouteName="HomeWithBottom">
+          <TabBottom.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
+          <TabBottom.Screen  options={{ headerShown: false }} name="Second" component={HomeScreen} />
+          <TabBottom.Screen options={{ headerShown: false }} name="Third" component={HomeScreen} />
+          <TabBottom.Screen options={{ headerShown: false }} name="Fourth" component={HomeScreen} />
+        </TabBottom.Navigator>
+)}
+
+function HomeDrawer() {
+  return (
+     
+      <Drawer.Navigator
+        //drawerPosition={global.language === 3 ? 'right' : 'left'}
+        initialRouteName="HomeWithDrawer"
+        drawerContent={(props) => <MyDrawer {...props} />}
+      >
+        <Drawer.Screen options={{ headerShown: false }} name="HomeWithDrawer" component={HomeWithBottomTab}  />
+       </Drawer.Navigator>
+  );
+}
 const MyStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeDrawer}  />
         <Stack.Screen options={{ headerShown: false }} name="Login" component={Login}  />
         <Stack.Screen options={{ headerShown: false }} name="Forpass" component={Forgotpass} />
         <Stack.Screen options={{ headerShown: false }} name="Register" component={Register} />
-        <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen}  />
         <Stack.Screen options={{ headerShown: false }} name="ProgramDetailScreen" component={ProgramDetailScreen} />
         <Stack.Screen options={{ headerShown: false }} name="ProgramListScreen" component={ProgramListScreen} />
         <Stack.Screen options={{ headerShown: false }} name="TutorialScreen" component={TutorialScreen} />

@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
-import { DrawerLayoutAndroid, Text, StyleSheet, View,TouchableOpacity } from "react-native";
+import React  from "react";
+import {   Text, StyleSheet, View,TouchableOpacity } from "react-native";
 import MainHeader from "../components/mainHeader";
-import Drawer from "../components/drawer";
 import Footer from "../components/footer";
 import Home from "../components/home";
 import { useNavigation } from '@react-navigation/native';
@@ -32,32 +31,30 @@ import Icon from 'react-native-vector-icons';
     </View>
   );
 
-  return (
-    <DrawerLayoutAndroid
-      ref={drawer}
-      drawerWidth={220}
-      drawerPosition={drawerPosition}
-      renderNavigationView={navigationView}
-      backgroundColor={'#e6f9ff'}
-    >
+ 
+   
+    return (
+    <View style={{backgroundColor:'#e6f9ff'}}>
       <View style={styles.drawerContainer}>
         <View style={ styles.drawerIcon}>
           <TouchableOpacity style={{paddingHorizontal:20}}  
-            onPress={() => drawer.current.openDrawer()}>
+            onPress={() => navigation.toggleDrawer()}>
             <Text style={styles.headerIcon}>#</Text>
           </TouchableOpacity>
         </View>
         <MainHeader title={'React Tutorial APP'} />
       </View>
       <Home navigation={navigation}/>
+      {/* <View style={{position:'absolute',bottom:70}}>
       <Footer navigation={navigation}/>
-    </DrawerLayoutAndroid>
+      </View> */}
+    </View>
      
      
     
   
-  );
-};
+      );
+  };
 
 const styles = StyleSheet.create({
   drawerContainer:{ 
@@ -96,6 +93,5 @@ const styles = StyleSheet.create({
     top:8,
     right:-10
   }
-});
 
- 
+});

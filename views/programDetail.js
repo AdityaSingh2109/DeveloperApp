@@ -1,10 +1,8 @@
 import React from "react";
 import { Text, StyleSheet, View,TouchableOpacity, ScrollView } from "react-native";
 import Header from "../components/header";
-import { useNavigation } from '@react-navigation/native';
-
-export default function ProgramDetailScreen ({route}) {
-  const navigation = useNavigation();
+ 
+export default function ProgramDetailScreen ({route,navigation}) {
   const { name } = route.params;
   return (
     <>

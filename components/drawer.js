@@ -1,7 +1,9 @@
 import React from 'react';
 import {StyleSheet, View,TouchableOpacity,Text,Image  } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
-const Drawer = () => {
+const MyDrawer = (props) => {
+  const navigation = useNavigation();
   return(
     <View style={styles.drawerContainer}>
       <View style={{alignItems:'center'}}>
@@ -15,22 +17,22 @@ const Drawer = () => {
         <Text style={{fontSize:20}}>Hi, Annu</Text>
       </View>
       <View style={{marginHorizontal:5, }}>
-        <TouchableOpacity style={styles.drawerOption}>
+        <TouchableOpacity style={styles.drawerOption} onPress={() =>navigation.navigate("TutorialScreen",{name:'JavaScript'})}>
           <Text style={styles.drawerOptionText}>JavaScript</Text>
         </TouchableOpacity>
       </View>
       <View style={{marginHorizontal:5, }}>
-        <TouchableOpacity style={styles.drawerOption}>
+        <TouchableOpacity style={styles.drawerOption} onPress={() =>navigation.navigate("TutorialScreen",{name:'ES-6'})}>
           <Text style={styles.drawerOptionText}>ES6</Text>
         </TouchableOpacity>
       </View>
       <View style={{marginHorizontal:5, }}>
-        <TouchableOpacity style={styles.drawerOption}>
+        <TouchableOpacity style={styles.drawerOption} onPress={() =>navigation.navigate("TutorialScreen",{name:'React'})}>
           <Text style={styles.drawerOptionText}>React</Text>
         </TouchableOpacity>
       </View>
       <View style={{marginHorizontal:5, }}>
-        <TouchableOpacity style={styles.drawerOption}>
+        <TouchableOpacity style={styles.drawerOption} onPress={() =>navigation.navigate("TutorialScreen",{name:'React Native'})}>
           <Text style={styles.drawerOptionText}>React-Native</Text>
         </TouchableOpacity>
       </View>
@@ -71,4 +73,4 @@ const Drawer = () => {
     }
    });
 
-   export default Drawer;
+   export default MyDrawer;

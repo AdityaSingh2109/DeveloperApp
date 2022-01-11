@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     marginHorizontal:5
   },
   fotterTitle:{
-    paddingHorizontal:20
+    paddingHorizontal:15
   },
   fotterText:{
     fontSize:20,
