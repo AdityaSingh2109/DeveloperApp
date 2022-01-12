@@ -3,6 +3,7 @@ import { Text, StyleSheet, View,TouchableOpacity } from "react-native";
 import Header from "../components/header";
 import TutorialFooter from "../components/tutorialFooter";
 import ProgramList from "../components/programList";
+import Icon  from "react-native-vector-icons/Entypo";
 
 export default function ProgramListScreen ({route,navigation}) {
    const { name,link } = route.params;
@@ -12,7 +13,7 @@ export default function ProgramListScreen ({route,navigation}) {
       <View style={ styles.drawerIcon}>
         <TouchableOpacity style={{paddingHorizontal:20}}  
           onPress={() => navigation.goBack()}>
-          <Text style={styles.headerIcon}>#</Text>
+          <Text style={styles.headerIcon}><Icon name="back" size={30} color="#000" /></Text>
         </TouchableOpacity>
       </View>
       <Header title={(name)} program={true} bkColor={true}/>

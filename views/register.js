@@ -38,12 +38,9 @@ export default function Register({navigation}) {
                         resizeMode={"cover"}
                     />
                 </View>
-                <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
+                {/* <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
                     <Text style={{fontSize:20,color:'#26619c'}}>Welcome, New User</Text>
-                </View>
-                         {/* resizeMode={"cover"}
-                    /> */}
-                {/* </View> */}
+                </View> */}
                 <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
                     <Text style={{fontSize:20,color:'#26619c'}}>React-Native (Android) Development</Text>
                 </View>    

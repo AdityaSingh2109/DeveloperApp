@@ -4,7 +4,7 @@ import { create } from 'react-test-renderer';
 // import { container, form } from '../styles';
 import HomeScreen from './home';
 
-import { StyleSheet ,Button, Text,Image , TextInput, View } from 'react-native';
+// import { StyleSheet ,Button, Text,Image , TextInput, View } from 'react-native';
  
 export default function Login({navigation}) {
     const [email, setEmail] = useState("abc@tftus.com");
@@ -35,14 +35,6 @@ export default function Login({navigation}) {
                 </View>
                 <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
                     <Text style={{fontSize:20,color:'#26619c'}}>React-Native App Development(Android)</Text>
-                        <Image
-                        style={{width:150,height:150,borderRadius:75,} }
-                        source={{uri:'https://image.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg'}}
-                        resizeMode={"cover"}
-                    />
-                </View>
-                <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
-                    <Text style={{fontSize:20,color:'#26619c'}}>Everything You Need to Know For React-Native App Development(Android)</Text>
                 </View>
             </View>
             <View style={container.formCenter}>
@@ -67,9 +59,7 @@ export default function Login({navigation}) {
                     onPress={() => onSignUp()}
                     title="Sign In"
                 />
-            </View>
-            <View style={form.bottomButton} >
-            <TouchableOpacity>
+                <TouchableOpacity>
                 <Text
                     title="Register"
                     onPress={() =>navigation.navigate("Register")} >
@@ -77,8 +67,6 @@ export default function Login({navigation}) {
                 </Text>
                 </TouchableOpacity>
             </View>
-
-
             {/* <View style={form.bottomButton} >
                 <Text
                     title="Register"
