@@ -3,6 +3,7 @@ import { Text, StyleSheet, View,TouchableOpacity } from "react-native";
 import Header from "../components/header";
 import TutorialFooter from "../components/tutorialFooter";
 import Tutorial from "../components/tutorial";
+import Icon from "react-native-vector-icons/Entypo";
  
 export default function TutorialScreen ({route,navigation}) {
    const { name } = route.params;
@@ -13,7 +14,7 @@ export default function TutorialScreen ({route,navigation}) {
       <View style={ styles.drawerIcon}>
         <TouchableOpacity style={{paddingHorizontal:20}}  
           onPress={() => navigation.goBack()}>
-          <Text style={styles.headerIcon}>#</Text>
+          <Text style={styles.headerIcon}><Icon name="back" size={30} color="#000" /></Text>
         </TouchableOpacity>
       </View>
       <Header title={(name)} bkColor={true}/>

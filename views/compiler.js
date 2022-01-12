@@ -3,6 +3,7 @@ import { Text, StyleSheet, View,TouchableOpacity } from "react-native";
 import MainHeader from "../components/mainHeader";
 import CompilerWeb from "../components/compilerWeb";
 import { useNavigation } from '@react-navigation/native';
+import Icon from "react-native-vector-icons/Entypo";
 
 export default function CompilerScreen ({route}) {
     const navigation = useNavigation();
@@ -14,7 +15,7 @@ export default function CompilerScreen ({route}) {
       <View style={ styles.drawerIcon}>
         <TouchableOpacity style={{paddingHorizontal:20}}  
           onPress={() => navigation.goBack()}>
-          <Text style={styles.headerIcon}>#</Text>
+          <Text style={styles.headerIcon}><Icon name="back" size={30} color="#000" /></Text>
         </TouchableOpacity>
       </View>
       <MainHeader title={(name)} bkColor={true}/>

@@ -1,10 +1,11 @@
-import React  from "react";
-import {   Text, StyleSheet, View,TouchableOpacity } from "react-native";
+import React, { useRef, useState } from "react";
+import { DrawerLayoutAndroid, Text, StyleSheet, View,TouchableOpacity } from "react-native";
 import MainHeader from "../components/mainHeader";
+import Drawer from "../components/drawer";
 import Footer from "../components/footer";
 import Home from "../components/home";
 import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons';
+import Icon from 'react-native-vector-icons/Entypo';
 
  export default function HomeScreen() {
   const drawer = useRef(null);
@@ -39,7 +40,7 @@ import Icon from 'react-native-vector-icons';
         <View style={ styles.drawerIcon}>
           <TouchableOpacity style={{paddingHorizontal:20}}  
             onPress={() => navigation.toggleDrawer()}>
-            <Text style={styles.headerIcon}>#</Text>
+            <Text style={styles.headerIcon}><Icon name="menu" size={30} color="#000" /></Text>
           </TouchableOpacity>
         </View>
         <MainHeader title={'React Tutorial APP'} />

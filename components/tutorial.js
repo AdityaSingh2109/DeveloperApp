@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text,TouchableWithoutFeedbackBase, TouchableWithoutFeedback, StatusBar, Button } from 'react-native';
-
+import Icon from 'react-native-vector-icons/AntDesign';
 const JavaScriptTutorial=[
   { id:0,name:'Setup For JavaScript', link:'https://linuxhint.com/set-up-visual-studio-code-for-javascript/#:~:text=%20How%20to%20setup%20Visual%20Studio%20Code%20for,applications%20and%20web%20pages%20dynamic%20and...%20More%20', o:true },
   { id:1, name:'JS Home', link:'https://www.w3schools.com/js/default.asp', o:false },
@@ -323,7 +323,7 @@ const Item = (props) =>{
             <Text style={[styles.title,props.id%2?{color:"#26619c"}:{color:"#fff"}]}>{props.title}</Text>
           </View>
           <View style={{flex:1  }}>
-            <Text style={[props.id%2?{color:"#26619c"}:{color:"#fff"},{fontSize:20}]}>#</Text>
+            <Text style={[props.id%2?{color:"#26619c"}:{color:"#fff"},{fontSize:20}]}><Icon name="arrowdown" size={30} color="#000" /></Text>
         </View>
         </View>
       </TouchableWithoutFeedback>
