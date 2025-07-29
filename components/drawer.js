@@ -1,11 +1,23 @@
 import React from 'react';
-import {StyleSheet, View,TouchableOpacity,Text,Image  } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import {StyleSheet, View,TouchableOpacity,Text,Image} from "react-native";
+import Icon from 'react-native-vector-icons/Entypo';
 
 const MyDrawer = (props) => {
-  const navigation = useNavigation();
+  const { navigation } = props;
+
+  const navigateAndClose = (screen, params) => {
+    navigation.navigate(screen, params);
+    navigation.closeDrawer();
+  };
+
   return(
     <View style={styles.drawerContainer}>
+      <TouchableOpacity 
+        style={styles.closeButton} 
+        onPress={() => navigation.closeDrawer()}
+      >
+        <Icon name="cross" size={30} color="#000" />
+      </TouchableOpacity>
       <View style={{alignItems:'center'}}>
         <Image
           style={styles.image }
@@ -17,22 +29,22 @@ const MyDrawer = (props) => {
         <Text style={{fontSize:20}}>Hi, Annu</Text>
       </View>
       <View style={{marginHorizontal:5, }}>
-        <TouchableOpacity style={styles.drawerOption} onPress={() =>navigation.navigate("TutorialScreen",{name:'JavaScript'})}>
+        <TouchableOpacity style={styles.drawerOption} onPress={() => navigateAndClose("TutorialScreen", {name: 'JavaScript'})}>
           <Text style={styles.drawerOptionText}>JavaScript</Text>
         </TouchableOpacity>
       </View>
       <View style={{marginHorizontal:5, }}>
-        <TouchableOpacity style={styles.drawerOption} onPress={() =>navigation.navigate("TutorialScreen",{name:'ES-6'})}>
+        <TouchableOpacity style={styles.drawerOption} onPress={() => navigateAndClose("TutorialScreen", {name: 'ES-6'})}>
           <Text style={styles.drawerOptionText}>ES6</Text>
         </TouchableOpacity>
       </View>
       <View style={{marginHorizontal:5, }}>
-        <TouchableOpacity style={styles.drawerOption} onPress={() =>navigation.navigate("TutorialScreen",{name:'React'})}>
+        <TouchableOpacity style={styles.drawerOption} onPress={() => navigateAndClose("TutorialScreen", {name: 'React'})}>
           <Text style={styles.drawerOptionText}>React</Text>
         </TouchableOpacity>
       </View>
       <View style={{marginHorizontal:5, }}>
-        <TouchableOpacity style={styles.drawerOption} onPress={() =>navigation.navigate("TutorialScreen",{name:'React Native'})}>
+        <TouchableOpacity style={styles.drawerOption} onPress={() => navigateAndClose("TutorialScreen", {name: 'React Native'})}>
           <Text style={styles.drawerOptionText}>React-Native</Text>
         </TouchableOpacity>
       </View>
@@ -66,10 +78,18 @@ const MyDrawer = (props) => {
       fontSize:20,
       color:"#000000"
     },
+     closeButton: {
+    position: 'absolute',
+    right: 10,
+    top: 1,
+    zIndex: 1,
+    padding: 10
+  },
     drawerContainer:{
       flexDirection:'column',
       alignContent:'center',
-      marginTop:40
+      marginTop:40,
+      position: 'relative'
     }
    });
 

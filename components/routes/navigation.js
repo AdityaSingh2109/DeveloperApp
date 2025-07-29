@@ -13,6 +13,7 @@ import Forgotpass from '../../views/Forpass';
 import MyDrawer from '../drawer';
 import { createDrawerNavigator} from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/Entypo';
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -21,11 +22,32 @@ const TabBottom = createBottomTabNavigator();
 function HomeWithBottomTab(){
 return(
         <TabBottom.Navigator
-          initialRouteName="HomeWithBottom">
-          <TabBottom.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
-          <TabBottom.Screen options={{ headerShown: false }} name="Second" component={HomeScreen} />
-          <TabBottom.Screen options={{ headerShown: false }} name="Third" component={HomeScreen} />
-          <TabBottom.Screen options={{ headerShown: false }} name="Fourth" component={HomeScreen} />
+          initialRouteName="HomeWithBottom"
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ color, size }) => {
+              let iconName;
+
+              if (route.name === 'Home') {
+                iconName = 'home';
+              } else if (route.name === 'Second') {
+                iconName = 'book';
+              } else if (route.name === 'Third') {
+                iconName = 'code';
+              } else if (route.name === 'Fourth') {
+                iconName = 'user';
+              }
+
+              return <Icon name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: '#26619c',
+            tabBarInactiveTintColor: 'gray',
+            headerShown: false
+          })}
+        >
+          <TabBottom.Screen name="Home" component={HomeScreen} />
+          <TabBottom.Screen name="Second" component={HomeScreen} />
+          <TabBottom.Screen name="Third" component={HomeScreen} />
+          <TabBottom.Screen name="Fourth" component={HomeScreen} />
         </TabBottom.Navigator>
 )}
 
@@ -36,8 +58,14 @@ function HomeDrawer() {
         //drawerPosition={global.language === 3 ? 'right' : 'left'}
         initialRouteName="HomeWithDrawer"
         drawerContent={(props) => <MyDrawer {...props} />}
+        screenOptions={{
+          drawerStyle: {
+            width: 300,
+          },
+          headerShown: false
+        }}
       >
-        <Drawer.Screen options={{ headerShown: false }} name="HomeWithDrawer" component={HomeWithBottomTab}  />
+        <Drawer.Screen name="HomeWithDrawer" component={HomeWithBottomTab} />
        </Drawer.Navigator>
   );
 }

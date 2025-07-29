@@ -52,15 +52,15 @@ const Home = () => {
    
   const renderHeader =({})=>(
     <View style={{marginVertical:20}}>
+      <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
+        <Text style={{fontSize:20,color:'#26619c'}}>TFT Tutorials</Text>
+      </View>
       <View style={{alignItems:'center'}}>
         <Image
           style={{width:150,height:150,borderRadius:75,} }
           source={{uri:'https://image.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg'}}
           resizeMode={"cover"}
         />
-      </View>
-      <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
-        <Text style={{fontSize:20,color:'#26619c'}}>TFT Tutorials</Text>
       </View>
     </View>
   )
