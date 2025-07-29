@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, StyleSheet, View,TouchableOpacity, ScrollView } from "react-native";
-import Header from "../components/header";
+import {Header} from "../components/header";
 import Icon from 'react-native-vector-icons/Entypo';
  
-export default function ProgramDetailScreen ({route,navigation}) {
+function ProgramDetailScreen ({route,navigation}) {
   const { name } = route.params;
   return (
     <>
@@ -89,4 +89,4 @@ const styles = StyleSheet.create({
   }
 });
 
- 
+ export default ProgramDetailScreen;

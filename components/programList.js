@@ -1,5 +1,13 @@
-import React,{useState} from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text,TouchableWithoutFeedbackBase, TouchableWithoutFeedback, StatusBar, Button } from 'react-native';
+import React from 'react';
+import { 
+  SafeAreaView, 
+  View, 
+  FlatList, 
+  StyleSheet, 
+  Text, 
+  TouchableWithoutFeedback 
+} from 'react-native';
+
 const DATA = [
   {
     id: '1',
@@ -27,27 +35,42 @@ const DATA = [
   {id: '19',title: 'React-Native', defination:'', o:false},
 ];
 
-const Item = ({id, title,navigation}) =>{ 
- 
-  return(
+const Item = ({ id, title, navigation }) => { 
+  const handlePress = () => {
+    if (navigation && navigation.navigate) {
+      navigation.navigate('ProgramDetailScreen', { name: title });
+    } else {
+      console.warn('Navigation prop is missing or invalid');
+    }
+  };
+
+  return (
     <View>
-      <View style={[styles.item,{borderRadius:50,margin:4},id%2?{backgroundColor:"#fff"}:{backgroundColor:"#26619c"}]}>
-      <TouchableWithoutFeedback onPress={()=>navigation.navigate('ProgramDetailScreen',{name:title})} >
-          <View style={{alignItems:'center',marginHorizontal:30 }}>
-            <Text style={[styles.title,id%2?{color:"#26619c"}:{color:"#fff"}]}>{title}</Text>
+      <View style={[
+        styles.item,
+        { borderRadius: 50, margin: 4 },
+        id % 2 ? { backgroundColor: "#fff" } : { backgroundColor: "#26619c" }
+      ]}>
+        <TouchableWithoutFeedback onPress={handlePress}>
+          <View style={{ alignItems: 'center', marginHorizontal: 30 }}>
+            <Text style={[
+              styles.title,
+              id % 2 ? { color: "#26619c" } : { color: "#fff" }
+            ]}>{title}</Text>
           </View>
-      </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
       </View>
     </View>
-  )
-}
- 
+  );
+};
+
 const ProgramList = ({navigation}) => {
   const renderItem = ({ item }) => (
-    <View>
-       <Item navigation={navigation} id={item.id} title={item.title} defination={item.defination} open={item.o} />
-    </View>
-   
+    <Item 
+      navigation={navigation} 
+      id={item.id} 
+      title={item.title}
+    />
   );
 
   return (
@@ -56,8 +79,8 @@ const ProgramList = ({navigation}) => {
         data={DATA}
         renderItem={renderItem}
         keyExtractor={item => item.id}
-        ListFooterComponent={<View style={{paddingBottom:10}}></View>}
-        ListHeaderComponent={<View style={{paddingTop:5}}></View>}
+        ListFooterComponent={() => <View style={{paddingBottom:10}} />}
+        ListHeaderComponent={() => <View style={{paddingTop:5}} />}
       />
     </SafeAreaView>
   );
@@ -95,4 +118,5 @@ const styles = StyleSheet.create({
   }
 });
 
+// Export as default
 export default ProgramList;

@@ -17,7 +17,7 @@ export default function Login({navigation}) {
     const onSignUp = () => {
          const isEmailValid = emailValidation();
          if(isEmailValid){
-            if(email=="abc@tftus.com"&& password=="password"){
+            if(email=="abc@tftus.com" && password=="password"){
                {navigation.navigate("Home")}
             }
         }
@@ -26,15 +26,15 @@ export default function Login({navigation}) {
     return (
         <View style={container.center}>
             <View style={{marginVertical:20}}>
-                <View style={{alignItems:'center'}}>
+                <View style={{paddingHorizontal:20,marginVertical:40,alignItems:'center',alignContent:'center'}}>
+                    <Text style={{fontSize:20,color:'#26619c'}}>React-Native App Development(Android)</Text>
+                </View>
+                <View style={{alignItems:'center',}}>
                     <Image
-                    style={{width:150,height:150,borderRadius:75,} }
+                    style={{width:300,height:300,borderRadius:150,}}
                     source={{uri:'https://image.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg'}}
                     resizeMode={"cover"}
                     />
-                </View>
-                <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
-                    <Text style={{fontSize:20,color:'#26619c'}}>React-Native App Development(Android)</Text>
                 </View>
             </View>
             <View style={container.formCenter}>
@@ -115,6 +115,7 @@ const container = StyleSheet.create({
 
     },
     formCenter: {
+        marginBottom: 250,
         justifyContent: 'center',
         flex: 1,
         margin: 25

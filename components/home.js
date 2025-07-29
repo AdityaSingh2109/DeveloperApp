@@ -1,5 +1,7 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text,Image, StatusBar, TouchableWithoutFeedback } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, Image, StatusBar, TouchableWithoutFeedback } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 const DATA = [
   {id: '1',title: 'JS',},
   {id: '2',title: 'ES-6',},
@@ -8,38 +10,44 @@ const DATA = [
   {id: '5',title: 'Redux',},
  ];
 
-const TutorialItem = ({ title ,navigation}) => (
- <View style={{flexDirection:'row' }}>
-  <TouchableWithoutFeedback onPress={()=>navigation.navigate('TutorialScreen',{name:title=='JS'?'JavaScript':title=='R N'?'React Native':title})} >
-    <View style={styles.item}>
-      <View style={{alignItems:'center'}}>
-        <Image
-          style={{width:60,height:60,borderRadius:35} }
-          source={{uri:'https://image.freepik.com/free-vector/flat-design-cms-concept-illustrated_23-2148796510.jpg'}}
-          resizeMode={"cover"}
-        />
-      </View>
-      <Text style={styles.title}>{title}</Text>
+const TutorialItem = ({ title }) => {
+  const navigation = useNavigation();
+  
+  return (
+    <View style={{flexDirection:'row' }}>
+      <TouchableWithoutFeedback onPress={()=>navigation.navigate('TutorialScreen',{name:title=='JS'?'JavaScript':title=='R N'?'React Native':title})} >
+        <View style={styles.item}>
+          <View style={{alignItems:'center'}}>
+            <Image
+              style={{width:60,height:60,borderRadius:35} }
+              source={{uri:'https://image.freepik.com/free-vector/flat-design-cms-concept-illustrated_23-2148796510.jpg'}}
+              resizeMode={"cover"}
+            />
+          </View>
+          <Text style={styles.title}>{title}</Text>
+        </View>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={()=>navigation.navigate('ProgramListScreen',{name:title=='JS'?'JavaScript':title=='R N'?'React Native':title})} >
+        <View style={styles.item}>
+          <View style={{alignItems:'center'}}>
+            <Image
+              style={{width:60,height:60,borderRadius:35} }
+              source={{uri:'https://image.freepik.com/free-vector/flat-design-cms-concept-illustrated_23-2148796510.jpg'}}
+              resizeMode={"cover"}
+            />
+          </View>
+          <Text style={styles.title}>{title+' Program'}</Text>
+        </View>
+      </TouchableWithoutFeedback>
     </View>
-  </TouchableWithoutFeedback>
-  <TouchableWithoutFeedback onPress={()=>navigation.navigate('ProgramListScreen',{name:title=='JS'?'JavaScript':title=='R N'?'React Native':title})} >
-    <View style={styles.item}>
-      <View style={{alignItems:'center'}}>
-        <Image
-          style={{width:60,height:60,borderRadius:35} }
-          source={{uri:'https://image.freepik.com/free-vector/flat-design-cms-concept-illustrated_23-2148796510.jpg'}}
-          resizeMode={"cover"}
-        />
-      </View>
-      <Text style={styles.title}>{title+' Program'}</Text>
-    </View>
-  </TouchableWithoutFeedback>
- </View>
+  );
+};
 
-);
-const Home = ({navigation}) => {
+const Home = () => {
+  const navigation = useNavigation();
+
   const renderTutorialItem = ({ item }) => (
-    <TutorialItem title={item.title} navigation={navigation} />
+    <TutorialItem title={item.title} />
   );
    
   const renderHeader =({})=>(
@@ -56,13 +64,13 @@ const Home = ({navigation}) => {
       </View>
     </View>
   )
-  const  renderFotter=({})=>(
+  const renderFotter = ({}) => (
     <View style={{flexDirection:'row',marginBottom:80}}>
-      <TouchableWithoutFeedback onPress={()=>navigation.navigate('CompilerScreen',{name:'Javascript compiler',link:'https://www.programiz.com/javascript/online-compiler/'})} >
+      <TouchableWithoutFeedback onPress={() => navigation.navigate('CompilerScreen', {name:'Javascript compiler', link:'https://www.programiz.com/javascript/online-compiler/'})}>
         <View style={styles.itemCompiler}>
           <View style={{alignItems:'center'}}>
             <Image
-              style={{width:60,height:60,borderRadius:35} }
+              style={{width:60,height:60,borderRadius:35}}
               source={{uri:'https://www.freepnglogos.com/uploads/javascript/javascript-wysiwyg-editor-and-reusable-assets-coherent-editor-5.png'}}
               resizeMode={"cover"}
             />
@@ -74,13 +82,13 @@ const Home = ({navigation}) => {
 )
 
   return (
-      <FlatList
-        data={DATA}
-        renderItem={renderTutorialItem}
-        ListHeaderComponent={renderHeader}
-        keyExtractor={item => item.id}
-        ListFooterComponent={renderFotter}
-      />
+    <FlatList
+      data={DATA}
+      renderItem={renderTutorialItem}
+      ListHeaderComponent={renderHeader}
+      keyExtractor={item => item.id}
+      ListFooterComponent={renderFotter}
+    />
   );
 }
 

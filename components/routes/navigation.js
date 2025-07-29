@@ -23,7 +23,7 @@ return(
         <TabBottom.Navigator
           initialRouteName="HomeWithBottom">
           <TabBottom.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
-          <TabBottom.Screen  options={{ headerShown: false }} name="Second" component={HomeScreen} />
+          <TabBottom.Screen options={{ headerShown: false }} name="Second" component={HomeScreen} />
           <TabBottom.Screen options={{ headerShown: false }} name="Third" component={HomeScreen} />
           <TabBottom.Screen options={{ headerShown: false }} name="Fourth" component={HomeScreen} />
         </TabBottom.Navigator>

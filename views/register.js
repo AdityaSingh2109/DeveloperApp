@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { TouchableOpacity, StyleSheet, Button, Text, TextInput,Image , View } from 'react-native';
 import { Snackbar } from 'react-native-paper';
 // import { container, form } from '../styles';
-import { useNavigation } from '@react-navigation/native';
-
 // require('firebase/firestore');
 
 export default function Register({navigation}) {
@@ -15,7 +13,7 @@ export default function Register({navigation}) {
     const [isValid, setIsValid] = useState(true);
 
     const onRegister = () => {
-        if (name.lenght == 0 || username.lenght == 0 || email.length == 0 || password.length == 0) {
+        if (name.length == 0 || username.length == 0 || email.length == 0 || password.length == 0) {
             setIsValid({ bool: true, boolSnack: true, message: "Please fill out everything" })
             return;
         }

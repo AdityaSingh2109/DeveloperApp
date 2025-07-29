@@ -2,10 +2,10 @@ import React from "react";
 import { Text, StyleSheet, View,TouchableOpacity } from "react-native";
 import MainHeader from "../components/mainHeader";
 import CompilerWeb from "../components/compilerWeb";
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation } from '@react-navigation/native';
 import Icon from "react-native-vector-icons/Entypo";
 
-export default function CompilerScreen ({route}) {
+const CompilerScreen = ({route}) => {
     const navigation = useNavigation();
     const { name,link } = route.params;
 
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
   }
 });
 
- 
+ export default CompilerScreen;

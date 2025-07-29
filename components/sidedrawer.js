@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import Drawer from "./drawer";
+import {Drawer} from "./drawer";
 import { Button, DrawerLayoutAndroid, Text, StyleSheet, View } from "react-native";
 const Sd = () => {
     const drawer = useRef(null);
