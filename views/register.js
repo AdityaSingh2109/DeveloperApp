@@ -1,210 +1,150 @@
-// import firebase from 'firebase';
 import React, { useState } from 'react';
-import { TouchableOpacity, StyleSheet, Button, Text, TextInput,Image , View } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Dimensions,
+} from 'react-native';
 import { Snackbar } from 'react-native-paper';
-// import { container, form } from '../styles';
-// require('firebase/firestore');
 
-export default function Register({navigation}) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
-    const [username, setUsername] = useState('');
-    const [isValid, setIsValid] = useState(true);
+export default function Register({ navigation }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [isValid, setIsValid] = useState({ boolSnack: false, message: '' });
 
-    const onRegister = () => {
-        if (name.length == 0 || username.length == 0 || email.length == 0 || password.length == 0) {
-            setIsValid({ bool: true, boolSnack: true, message: "Please fill out everything" })
-            return;
-        }
-        if (password.length < 6) {
-            setIsValid({ bool: true, boolSnack: true, message: "passwords must be at least 6 characters" })
-            return;
-        }
-        if (password.length < 6) {
-            setIsValid({ bool: true, boolSnack: true, message: "passwords must be at least 6 characters" })
-            return;
-        }
+  const onRegister = () => {
+    if (!name || !username || !email || !password) {
+      setIsValid({ boolSnack: true, message: "Please fill out everything" });
+      return;
     }
-    return (
-        <View style={container.center}>
-            <View style={{marginVertical:20}}>
-                <View style={{alignItems:'center'}}>
-                    <Image
-                        style={{width:150,height:150,borderRadius:75,} }
-                        source={{uri:'https://image.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg'}}
-                        resizeMode={"cover"}
-                    />
-                </View>
-                {/* <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
-                    <Text style={{fontSize:20,color:'#26619c'}}>Welcome, New User</Text>
-                </View> */}
-                <View style={{paddingHorizontal:20,marginVertical:10,alignItems:'center',alignContent:'center'}}>
-                    <Text style={{fontSize:20,color:'#26619c'}}>React-Native (Android) Development</Text>
-                </View>    
-            </View>
-            <View style={container.formCenter}>
-                <TextInput
-                    style={form.textInput}
-                    placeholder="Username"
-                    value={username}
-                    keyboardType="twitter"
-                    onChangeText={(username) => setUsername(username.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '').replace(/[^a-z0-9]/gi, ''))}
-                />
-                <TextInput
-                    style={form.textInput}
-                    placeholder="name"
-                    onChangeText={(name) => setName(name)}
-                />
-                <TextInput
-                    style={form.textInput}
-                    placeholder="email"
-                    onChangeText={(email) => setEmail(email)}
-                />
-                <TextInput
-                    style={form.textInput}
-                    placeholder="password"
-                    secureTextEntry={true}
-                    onChangeText={(password) => setPassword(password)}
-                />
+    if (password.length < 6) {
+      setIsValid({ boolSnack: true, message: "Passwords must be at least 6 characters" });
+      return;
+    }
+  };
 
-                <Button
-                    style={form.button}
-                    onPress={() => onRegister()}
-                    title="Register"
-                />
-                <TouchableOpacity>
+  const { width } = Dimensions.get('window');
+
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      style={{ flex: 1 }}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
+          <View style={styles.center}>
+            <View style={{ marginVertical: 20 }}>
+              <View style={{ paddingHorizontal: 20, marginVertical: 20, alignItems: 'center' }}>
                 <Text
-                    title="Register"
-                    onPress={() =>navigation.navigate("Login")} >
-                    Already have an account? SignIn.
+                  style={{
+                    fontSize: width * 0.05,
+                    color: '#26619c',
+                  }}
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                  adjustsFontSizeToFit
+                >
+                  React-Native App Development(Android)
                 </Text>
-                </TouchableOpacity>
+              </View>
+              <View style={{ alignItems: 'center' }}>
+                <Image
+                  style={{
+                    width: width * 0.6,
+                    height: width * 0.6,
+                    borderRadius: (width * 0.6) / 2,
+                  }}
+                  source={{
+                    uri: 'https://image.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg',
+                  }}
+                  resizeMode="cover"
+                />
+              </View>
             </View>
 
-            {/* <View style={form.bottomButton} >
-                <Text
-                    onPress={() =>navigation.navigate("Login")} >
-                    Already have an account? SignIn.
-                </Text>
-            </View> */}
+            <View style={styles.formCenter}>
+              <TextInput
+                style={form.textInput}
+                placeholder="Username"
+                value={username}
+                keyboardType="twitter"
+                onChangeText={(username) =>
+                  setUsername(
+                    username
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/\s+/g, '')
+                      .replace(/[^a-z0-9]/gi, '')
+                  )
+                }
+              />
+              <TextInput
+                style={form.textInput}
+                placeholder="Name"
+                onChangeText={(name) => setName(name)}
+              />
+              <TextInput
+                style={form.textInput}
+                placeholder="Email"
+                onChangeText={(email) => setEmail(email)}
+              />
+              <TextInput
+                style={form.textInput}
+                placeholder="Password"
+                secureTextEntry={true}
+                onChangeText={(password) => setPassword(password)}
+              />
+
+              <Button onPress={onRegister} title="Register" />
+
+              <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                <Text style={{ marginTop: 15 }}>Already have an account? SignIn.</Text>
+              </TouchableOpacity>
+            </View>
+
             <Snackbar
-                visible={isValid.boolSnack}
-                duration={2000}
-                onDismiss={() => { setIsValid({ boolSnack: false }) }}>
-                {isValid.message}
+              visible={isValid.boolSnack}
+              duration={2000}
+              onDismiss={() => setIsValid({ boolSnack: false })}
+            >
+              {isValid.message}
             </Snackbar>
-        </View>
-
-    )
+          </View>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+  );
 }
-const container = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    camera: {
-        flex: 1,
-        flexDirection: 'row'
-    },
-    input: {
-        flexWrap: "wrap"
-    },
-    containerPadding: {
-        flex: 1,
-        padding: 15
-    },
-    center: {
-        flex: 1,
-    },
-    horizontal: {
-        flexDirection: 'row',
-        display: 'flex',
-    },
-    form: {
-        flex: 1,
-        margin: 25
-    },
-    profileInfo: {
-        padding: 25,
-        flexDirection: 'column',
-    },
-    row: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        height: 'auto',
 
-    },
-    formCenter: {
-        justifyContent: 'center',
-        flex: 1,
-        margin: 25
-    },
-    containerImage: {
-        flex: 1 / 3
-
-    },
-    image: {
-        aspectRatio: 1 / 1,
-    },
-    fillHorizontal: {
-        flexGrow: 1,
-        paddingBottom: 0
-    },
-    imageSmall: {
-        aspectRatio: 1 / 1,
-        height: 70
-    },
-    gallery: {
-
-        borderWidth: 1,
-        borderColor: 'gray',
-    },
-    splash: {
-        padding: 200,
-        height: '100%',
-        width: '100%'
-    },
-    chatRight: {
-        margin: 10,
-        marginBottom: 10,
-        backgroundColor: 'dodgerblue',
-        padding: 10,
-        borderRadius: 8,
-        alignSelf: 'flex-end'
-
-    },
-    chatLeft: {
-        margin: 10,
-        marginBottom: 10,
-        backgroundColor: 'grey',
-        padding: 10,
-        borderRadius: 8,
-        alignItems: 'flex-end',
-        textAlign: 'right',
-        alignSelf: 'flex-start'
-    }
-})
+const styles = StyleSheet.create({
+  center: {
+    flex: 1,
+  },
+  formCenter: {
+    justifyContent: 'center',
+    marginHorizontal: 25,
+    paddingBottom: 50,
+  },
+});
 
 const form = StyleSheet.create({
-    textInput: {
-        marginBottom: 10,
-        borderColor: 'gray',
-        backgroundColor: 'whitesmoke',
-        padding: 10,
-        borderWidth: 1,
-        borderRadius: 8
-    },
-    bottomButton: {
-        alignContent: 'center',
-        borderTopColor: 'gray',
-        borderTopWidth: 1,
-        padding: 10,
-        textAlign: 'center',
-    },
-    roundImage: {
-        width: 100,
-        height: 100,
-        borderRadius: 100 / 2
-    }
-
-})
+  textInput: {
+    marginBottom: 10,
+    borderColor: 'gray',
+    backgroundColor: 'whitesmoke',
+    padding: 10,
+    borderWidth: 1,
+    borderRadius: 8,
+  },
+});

@@ -115,6 +115,7 @@ dependencies {
    // The version of react-native is set by the React Native Gradle Plugin
     implementation project(':react-native-gesture-handler')
     implementation("com.facebook.react:react-android")
+    implementation project(':react-native-splash-screen')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
    if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
