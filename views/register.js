@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerUser } from './redux/authSlice';
 import {
   View,
   Text,
@@ -15,24 +17,68 @@ import {
   Dimensions,
 } from 'react-native';
 import { Snackbar } from 'react-native-paper';
+import { clearError } from './redux/authSlice';
 
 export default function Register({ navigation }) {
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector(state => state.auth);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [isValid, setIsValid] = useState({ boolSnack: false, message: '' });
 
-  const onRegister = () => {
+  const emailValidation = email => {
+    const regex =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(email);
+  };
+
+  const onRegister = async () => {
+    // Validation
     if (!name || !username || !email || !password) {
-      setIsValid({ boolSnack: true, message: "Please fill out everything" });
+      setIsValid({ boolSnack: true, message: 'Please fill out everything' });
       return;
     }
     if (password.length < 6) {
-      setIsValid({ boolSnack: true, message: "Passwords must be at least 6 characters" });
+      setIsValid({
+        boolSnack: true,
+        message: 'Password must be at least 6 characters',
+      });
       return;
     }
+    if (!emailValidation(email)) {
+      setIsValid({ boolSnack: true, message: 'Please enter a valid email' });
+      return;
+    }
+
+    // Register user
+    const userData = {
+      username,
+      name,
+      email,
+      password, // In a real app, you should hash the password
+      createdAt: new Date().toISOString(),
+    };
+
+    const success = await dispatch(registerUser(userData));
+
+    if (success) {
+      setIsValid({ boolSnack: true, message: 'Registration successful!' });
+      // Clear form
+      setUsername('');
+      setName('');
+      setEmail('');
+      setPassword('');
+      // Navigate to login after short delay
+      setTimeout(() => {
+        navigation.navigate('Login');
+      }, 1000);
+    }
   };
+useEffect(() => {
+  dispatch(clearError());
+}, []);
 
   const { width } = Dimensions.get('window');
 
@@ -42,10 +88,19 @@ export default function Register({ navigation }) {
       style={{ flex: 1 }}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
+        <ScrollView
+          contentContainerStyle={{ flexGrow: 1 }}
+          keyboardShouldPersistTaps="handled"
+        >
           <View style={styles.center}>
             <View style={{ marginVertical: 20 }}>
-              <View style={{ paddingHorizontal: 20, marginVertical: 20, alignItems: 'center' }}>
+              <View
+                style={{
+                  paddingHorizontal: 20,
+                  marginVertical: 20,
+                  alignItems: 'center',
+                }}
+              >
                 <Text
                   style={{
                     fontSize: width * 0.05,
@@ -74,42 +129,54 @@ export default function Register({ navigation }) {
             </View>
 
             <View style={styles.formCenter}>
+              {error && <Text style={styles.errorText}>{error}</Text>}
               <TextInput
                 style={form.textInput}
                 placeholder="Username"
                 value={username}
                 keyboardType="twitter"
-                onChangeText={(username) =>
+                onChangeText={username =>
                   setUsername(
                     username
                       .normalize('NFD')
                       .replace(/[\u0300-\u036f]/g, '')
                       .replace(/\s+/g, '')
-                      .replace(/[^a-z0-9]/gi, '')
+                      .replace(/[^a-z0-9]/gi, ''),
                   )
                 }
               />
               <TextInput
                 style={form.textInput}
                 placeholder="Name"
-                onChangeText={(name) => setName(name)}
+                onChangeText={name => setName(name)}
               />
               <TextInput
                 style={form.textInput}
                 placeholder="Email"
-                onChangeText={(email) => setEmail(email)}
+                onChangeText={email => setEmail(email)}
               />
               <TextInput
                 style={form.textInput}
                 placeholder="Password"
                 secureTextEntry={true}
-                onChangeText={(password) => setPassword(password)}
+                onChangeText={password => setPassword(password)}
               />
 
-              <Button onPress={onRegister} title="Register" />
+              <Button
+                onPress={onRegister}
+                title={loading ? 'Registering...' : 'Register'}
+                disabled={loading}
+              />
 
-              <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                <Text style={{ marginTop: 15 }}>Already have an account? SignIn.</Text>
+              <TouchableOpacity
+                onPress={() => {
+                  dispatch(clearError());
+                  navigation.navigate('Login');
+                }}
+              >
+                <Text style={{ marginTop: 15 }}>
+                  Already have an account? SignIn.
+                </Text>
               </TouchableOpacity>
             </View>
 
@@ -135,6 +202,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: 25,
     paddingBottom: 50,
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 10,
+    textAlign: 'center',
   },
 });
 

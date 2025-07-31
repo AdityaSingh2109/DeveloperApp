@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from './redux/authSlice';
 import {
   StyleSheet,
   Text,
@@ -14,27 +16,43 @@ import {
   Platform,
   Dimensions,
 } from 'react-native';
+import { clearError } from './redux/authSlice';
+import { useFocusEffect } from '@react-navigation/native';
+
 
 export default function Login({ navigation }) {
-  const [email, setEmail] = useState('abc@tftus.com');
-  const [password, setPassword] = useState('password');
-
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector(state => state.auth);
+  
+useFocusEffect(
+  React.useCallback(() => {
+    setEmail('');
+    setPassword('');
+    dispatch(clearError());
+  }, [dispatch])
+);
   const emailValidation = () => {
     const regex =
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\\.,;:\s@\"]+\.)+[^<>()[\]\\.,;:\s@\"]{2,})$/i;
     return !(!email || regex.test(email) === false);
   };
 
-  const onSignUp = () => {
+  const onSignUp = async () => {
     const isEmailValid = emailValidation();
     if (isEmailValid) {
-      if (email === 'abc@tftus.com' && password === 'password') {
+      const success = await dispatch(loginUser(email, password));
+      if (success) {
         navigation.navigate('Home');
       }
     }
   };
 
   const { width } = Dimensions.get('window');
+useEffect(() => {
+  dispatch(clearError());
+}, []);
 
   return (
     <KeyboardAvoidingView
@@ -80,24 +98,41 @@ export default function Login({ navigation }) {
             </View>
 
             <View style={styles.formCenter}>
+              {error && <Text style={styles.errorText}>{error}</Text>}
               <TextInput
                 style={form.textInput}
-                placeholder="Email"
+                placeholder="Enter your email"
+                placeholderTextColor="#666"
                 onChangeText={email => setEmail(email)}
                 value={email}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoComplete="email"
               />
               <TextInput
                 style={form.textInput}
-                placeholder="Password"
+                placeholder="Enter your password"
+                placeholderTextColor="#666"
                 secureTextEntry={true}
                 onChangeText={password => setPassword(password)}
                 value={password}
+                autoCapitalize="none"
+                autoComplete="password"
               />
               <TouchableOpacity onPress={() => navigation.navigate('Forpass')}>
                 <Text style={styles.forgot_button}>Forgot Password?</Text>
               </TouchableOpacity>
-              <Button title="Sign In" onPress={onSignUp} />
-              <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+              <Button
+                title={loading ? 'Signing In...' : 'Sign In'}
+                onPress={onSignUp}
+                disabled={loading}
+              />
+              <TouchableOpacity
+                onPress={() => {
+                  dispatch(clearError());
+                  navigation.navigate('Register');
+                }}
+              >
                 <Text style={{ marginTop: 15 }}>
                   Don't have an account? SignUp.
                 </Text>
@@ -123,6 +158,11 @@ const styles = StyleSheet.create({
     height: 30,
     color: 'blue',
     marginBottom: 10,
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 10,
+    textAlign: 'center',
   },
 });
 
